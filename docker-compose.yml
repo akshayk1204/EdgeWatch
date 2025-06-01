@@ -1,0 +1,40 @@
+version: '3.8'  # Can remove this line as suggested by the warning
+
+services:
+  prometheus:
+    image: prom/prometheus
+    networks:
+      - monitoring
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    networks:
+      - monitoring
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+  cloudflare-exporter:
+    build:
+      context: ./cloudflare-exporter
+      dockerfile: Dockerfile
+    networks:
+      - monitoring
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./cloudflare-exporter/.env
+    volumes:
+      - ./cloudflare-exporter:/app
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  grafana-storage:

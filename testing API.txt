@@ -1,0 +1,6 @@
+curl -s -X POST https://api.cloudflare.com/client/v4/graphql \
+  -H "Authorization: Bearer $CFLARE_API_KEY" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query":"query { viewer { zones(filter: {zoneTag: \"e96198afc4883ff9cb8e1b024372ce4b\"}) { httpRequests1dGroups(limit: 1, filter: {date_gt: \"2024-12-31\"}) { dimensions { date } sum { requests bytes } } } } }"
+  }' | jq

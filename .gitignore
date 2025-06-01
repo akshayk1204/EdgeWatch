@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+cloudflare-exporter/.env
+
+# Docker
+*.log
+*.pid
+*.sock
+.envrc
+.dockerignore
+
+# OS
+.DS_Store
+
+# Volumes
+grafana-storage/
+
+# IDEs
+.vscode/
+.idea/
