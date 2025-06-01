@@ -35,6 +35,7 @@ EdgeWatch/
 ├── docker-compose.yml
 ├── requirements.txt
 
+
 🌐 Domain Setup (Optional)
 To use a custom domain (e.g. edgewatch.yourdomain.com) with HTTPS:
 
